@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from v1 import views as v1_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^call/(?P<route>.+)$', v1_views.display_sim_response),
 ]
