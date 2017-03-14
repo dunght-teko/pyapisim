@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+
 from v1 import views as v1_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^call/(?P<route>.+)$', v1_views.display_sim_response),
+    url(r'^rest/(?P<route>.+)$', v1_views.RestService.as_view(), name='http_response'),
+    # url(r'^soap/$', v1_views.SoapSimView.as_view()),
+    url(r'^soap/$', v1_views.sim_soap_service, name='soap_server_error_code'),
 ]
