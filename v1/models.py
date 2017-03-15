@@ -3,6 +3,7 @@ from django.db import models
 
 from apisimulator import HTTP_STATUS_CODE
 
+
 # https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_display
 class SimGroup(models.Model):
     name = models.CharField(max_length=50)
@@ -28,3 +29,7 @@ class SimResponse(models.Model):
 
 class SimResponseAdmin(admin.ModelAdmin):
     list_display = ('group', 'name', 'route', 'sleep_second', 'description')
+    list_select_related = True
+    list_filter = ('group__name',)
+    list_display_links = ('name', 'route')
+    search_fields = ('name', 'description')
