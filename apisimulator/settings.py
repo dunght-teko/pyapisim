@@ -24,7 +24,7 @@ SECRET_KEY = 'eob)oeb_1wvv+wee@@f^vf8r2i^$72s*@n8w+y*p=h%o2912@t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://simapi.ved.com.vn', '127.0.0.1']
 
 # Application definition
 
