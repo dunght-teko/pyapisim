@@ -24,7 +24,7 @@ SECRET_KEY = 'eob)oeb_1wvv+wee@@f^vf8r2i^$72s*@n8w+y*p=h%o2912@t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://simapi.ved.com.vn', '127.0.0.1']
+ALLOWED_HOSTS = ['simapi.teko.vn', '127.0.0.1', '123.31.32.166']
 
 # Application definition
 
@@ -114,4 +114,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_URL = BASE_DIR + '/static/'
+# STATIC_URL = BASE_DIR + '/static/'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = '/var/www/simapi.teko.vn/static/'

@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^rest/(?P<route>.+)$', v1_views.RestService.as_view(), name='http_response'),
     # url(r'^soap/$', v1_views.SoapSimView.as_view()),
-    url(r'^soap/$', v1_views.sim_soap_service, name='soap_server_error_code'),
+    # url(r'^soap/$', v1_views.sim_soap_service, name='soap_server_error_code'),
 ]
