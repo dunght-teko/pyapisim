@@ -1,6 +1,8 @@
 from time import sleep
 
 from django.db.models import Q
+from django.http import JsonResponse
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -30,19 +32,27 @@ class RestService(APIView):
                 request=sim_request
             )
 
-            response.status_code = sim_response.http_status_code
-            response.content = sim_response.body
             headers = sim_response.headers.splitlines()
             for header in headers:
                 key, value = header.split(':')
                 response[key] = value
+
+            response.status_code = sim_response.http_status_code
+            response.content = sim_response.body
+
             sleep(sim_response.sleep_second)
 
         except SimRequest.DoesNotExist:
-            return Response(data=u'Request not found.')
+            return JsonResponse({
+                'code': 'NOT_FOUND',
+                'message': 'Request not found. HINT: check (METHOD, route).',
+            }, status=status.HTTP_404_NOT_FOUND)
 
         except SimResponse.DoesNotExist:
-            return Response(data=u'Response not found.')
+            return JsonResponse({
+                'code': 'NOT_FOUND',
+                'message': 'Response not found. HINT: check (sequence).',
+            }, status=status.HTTP_404_NOT_FOUND)
 
         return response
 
