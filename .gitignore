@@ -1,3 +1,4 @@
+.venv
 .idea
 apisimulator.sqlite3
 *.pyc
